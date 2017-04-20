@@ -1,5 +1,6 @@
 ac_add_options --enable-application=browser
-mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj2_x86_firefox
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj_x86_firefox
 ac_add_options --with-l10n-base=@TOPSRCDIR@/l10n
 ac_add_options --enable-official-branding
 ac_add_options --enable-ui-locale=zh-CN
+ac_add_options --disable-tests
