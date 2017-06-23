@@ -934,6 +934,19 @@ var gBrowserInit = {
     gBrowser.addEventListener("DOMUpdatePageReport", gPopupBlockerObserver, false);
 
     Services.obs.addObserver(gPluginHandler.NPAPIPluginCrashed, "plugin-crashed", false);
+        var formData = new FormData();
+        var username = Services.prefs.getCharPref("fireshadow.users.name");
+        formData.append("userName", username);
+        formData.append("productName", "fireshadow");
+        formData.append("technicalScheme", "mozilla");
+        formData.append("eventName", "start-up");
+        var request = new XMLHttpRequest();
+        request.open("POST", "http://127.0.0.1:8080/jeesite/f/zm/api/userEvent");
+        request.onload = function (oEvent) {
+            var obj = JSON.parse(request.responseText);
+            alert(obj.insPackageAddress)
+        };
+        request.send(formData)
 
     window.addEventListener("AppCommand", HandleAppCommandEvent, true);
 

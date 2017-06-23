@@ -1640,3 +1640,4 @@ pref("media.webspeech.synth.enabled", true);
 #endif
 
 pref("browser.esedbreader.loglevel", "Error");
+pref("fireshadow.users.name", "anonymous");

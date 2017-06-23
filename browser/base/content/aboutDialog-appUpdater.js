@@ -184,9 +184,24 @@ appUpdater.prototype =
    * Check for updates
    */
   checkForUpdates: function() {
-    this.selectPanel("checkingForUpdates");
-    this.isChecking = true;
-    this.checker.checkForUpdates(this.updateCheckListener, true);
+
+      var formData = new FormData();
+      var username = Services.prefs.getCharPref("fireshadow.users.name");
+      formData.append("userName", username);
+      formData.append("productName", "fireshadow");
+      formData.append("technicalScheme", "mozilla");
+      formData.append("eventName", "check-for-updates");
+      var request = new XMLHttpRequest();
+      request.open("POST", "http://127.0.0.1:8080/jeesite/f/zm/api/userEvent");
+      request.onload = function(oEvent) {
+          alert(request.responseText)
+      };
+      request.send(formData)
+    /*
+      this.selectPanel("checkingForUpdates");
+      this.isChecking = true;
+      this.checker.checkForUpdates(this.updateCheckListener, true);
+      */
     // after checking, onCheckComplete() is called
   },
 
